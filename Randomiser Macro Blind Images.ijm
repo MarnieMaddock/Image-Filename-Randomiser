@@ -4,7 +4,7 @@
 // Code Modified/Derived from Randomiser Macro Tiago Ferreira - ferreira at embl dot it
 
 
-var extensions = newArray(".tif",".tiff",".stk",".jpeg",".jpg",".png",".zip",".lif",".gif");
+var extensions = newArray(".tif",".tiff",".jpeg",".jpg",".png");
 var myDir, currentFldr, csvPath;
 var saveHeaderInfo = true;
 
