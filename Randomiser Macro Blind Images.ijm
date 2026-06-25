@@ -33,7 +33,6 @@ macro "Filename Randomizer [F6]" {
 // ------------------------------------------------------------------
 // Settings
 // ------------------------------------------------------------------
-
 function settings(extlist) {
 
     msg1 = "Choose extension of images to randomize.\n\n" +
@@ -45,12 +44,14 @@ function settings(extlist) {
     Array.sort(extlist);
 
     lgth = extlist.length;
-    gridSide = sqrt(lgth);
-    rows = round(gridSide)-1;
-    cols = round(gridSide)+2;
+
+    rows = lgth;
+    cols = 1;
 
     defaults = newArray(lgth);
-    defaults = Array.fill(defaults, 1);
+    for (i = 0; i < lgth; i++) {
+        defaults[i] = true;
+    }
 
     Dialog.create("Settings");
     Dialog.addMessage(msg1);
@@ -61,9 +62,9 @@ function settings(extlist) {
     count = 0;
     chosenExt = newArray(lgth);
 
-    for (i=0; i<lgth; i++) {
+    for (i = 0; i < lgth; i++) {
         chosenExt[i] = Dialog.getCheckbox();
-        if (chosenExt[i] == 1) count++;
+        if (chosenExt[i] == true) count++;
     }
 
     saveHeaderInfo = Dialog.getCheckbox();
@@ -71,8 +72,8 @@ function settings(extlist) {
     finalExt = newArray(count);
     h = 0;
 
-    for (i=0; i<lgth; i++) {
-        if (chosenExt[i] == 1) {
+    for (i = 0; i < lgth; i++) {
+        if (chosenExt[i] == true) {
             finalExt[h] = extlist[i];
             h++;
         }
